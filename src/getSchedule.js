@@ -17,16 +17,19 @@ function animalExhibition(scheduleTarget) {
 
 function createSchedule() {
   const generalSchedule = Object.create(hoursList);
-  generalSchedule.Tuesday = { officeHour: `Open from ${hoursList.Tuesday.open}am until ${hoursList.Tuesday.close}pm`, exhibition: animalExhibition('Tuesday') };
-  generalSchedule.Wednesday = { officeHour: `Open from ${hoursList.Wednesday.open}am until ${hoursList.Wednesday.close}pm`, exhibition: animalExhibition('Wednesday') };
-  generalSchedule.Thursday = { officeHour: `Open from ${hoursList.Thursday.open}am until ${hoursList.Thursday.close}pm`, exhibition: animalExhibition('Thursday') };
-  generalSchedule.Friday = { officeHour: `Open from ${hoursList.Friday.open}am until ${hoursList.Friday.close}pm`, exhibition: animalExhibition('Friday') };
-  generalSchedule.Saturday = { officeHour: `Open from ${hoursList.Saturday.open}am until ${hoursList.Saturday.close}pm`, exhibition: animalExhibition('Saturday') };
-  generalSchedule.Sunday = { officeHour: `Open from ${hoursList.Sunday.open}am until ${hoursList.Sunday.close}pm`, exhibition: animalExhibition('Sunday') };
+  const daysOfWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  
+  daysOfWeek.forEach(day => {
+    generalSchedule[day] = {
+      officeHour: `Open from ${hoursList[day].open}am until ${hoursList[day].close}pm`,
+      exhibition: animalExhibition(day)
+    };
+  });
 
   Object.assign(generalSchedule, mondaySchedule);
   return generalSchedule;
 }
+  
 
 function getSchedule(scheduleTarget) {
   if (scheduleTarget === 'Monday') {
@@ -42,6 +45,5 @@ function getSchedule(scheduleTarget) {
   }
   return createSchedule();
 }
-console.log(getSchedule('abobrinha'));
 
 module.exports = getSchedule, createSchedule, animalExhibition;
