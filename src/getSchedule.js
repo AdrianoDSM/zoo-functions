@@ -18,7 +18,6 @@ function getSchedule(scheduleTarget) {
   const schedule = {} 
   schedule[scheduleTarget]={'officeHour': `Open from ${hoursList[scheduleTarget].open}am until ${hoursList[scheduleTarget].close}pm`,'exhibition': exhibition};
   console.log(schedule)
-  console.log(exhibition)
   if(Object.keys(hoursList).includes(scheduleTarget)){
     return schedule
   }    
