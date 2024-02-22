@@ -21,38 +21,45 @@ function getAnimalMap(options) {
 
     }else if(options.includeNames && options.sorted && (options.sex==='male' || options.sex==='female')){
         
-        if(options.sex==='male'){
-
-        }else if(options.sex==='female'){
-
-        }
+        animalLocations.NE=[
+            {lions: speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
+            {giraffes: speciesList.filter(e=>e.name==='giraffes').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()}
+        ];
+        animalLocations.NW=[
+            {tigers: speciesList.filter(e=>e.name==='tigers').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
+            {bears: speciesList.filter(e=>e.name==='bears').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
+            {elephants: speciesList.filter(e=>e.name==='elephants').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()}
+        ];
+        animalLocations.SE=[
+            {penguins: speciesList.filter(e=>e.name==='penguins').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
+            {otters: speciesList.filter(e=>e.name==='otters').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()}
+        ];
+            animalLocations.SW=[
+            {frogs: speciesList.filter(e=>e.name==='frogs').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
+            {snakes: speciesList.filter(e=>e.name==='snakes').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()}
+        ];
+        return animalLocations;
 
     }else if(options.includeNames && (options.sex==='male' || options.sex==='female')){
-
-        if(options.sex==='male'){
             
-            animalLocations.NE=[
-                {lions: speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().map(d=>d.name)},
-                {giraffes: speciesList.filter(e=>e.name==='giraffes').map(i=>i.residents).flat().map(d=>d.name)}
-            ];
-            animalLocations.NW=[
-                {tigers: speciesList.filter(e=>e.name==='tigers').map(i=>i.residents).flat().map(d=>d.name)},
-                {bears: speciesList.filter(e=>e.name==='bears').map(i=>i.residents).flat().map(d=>d.name)},
-                {elephants: speciesList.filter(e=>e.name==='elephants').map(i=>i.residents).flat().map(d=>d.name)}
-            ];
-            animalLocations.SE=[
-                {penguins: speciesList.filter(e=>e.name==='penguins').map(i=>i.residents).flat().map(d=>d.name)},
-                {otters: speciesList.filter(e=>e.name==='otters').map(i=>i.residents).flat().map(d=>d.name)}
-            ];
+        animalLocations.NE=[
+            {lions: speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)},
+            {giraffes: speciesList.filter(e=>e.name==='giraffes').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)}
+        ];
+        animalLocations.NW=[
+            {tigers: speciesList.filter(e=>e.name==='tigers').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)},
+            {bears: speciesList.filter(e=>e.name==='bears').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)},
+            {elephants: speciesList.filter(e=>e.name==='elephants').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)}
+        ];
+        animalLocations.SE=[
+            {penguins: speciesList.filter(e=>e.name==='penguins').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)},
+            {otters: speciesList.filter(e=>e.name==='otters').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)}
+        ];
             animalLocations.SW=[
-                {frogs: speciesList.filter(e=>e.name==='frogs').map(i=>i.residents).flat().map(d=>d.name)},
-                {snakes: speciesList.filter(e=>e.name==='snakes').map(i=>i.residents).flat().map(d=>d.name)}
-            ];
-            return animalLocations
-
-        }else if(options.sex==='female'){
-
-        }
+            {frogs: speciesList.filter(e=>e.name==='frogs').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)},
+            {snakes: speciesList.filter(e=>e.name==='snakes').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name)}
+        ];
+        return animalLocations;
 
 
     }else if(options.includeNames===true && options.sorted===true){
@@ -104,6 +111,6 @@ function getAnimalMap(options) {
 
 
 }
-console.log(speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().filter(d=>d.sex==='male').map(j=>j.name))
-//console.log(getAnimalMap({includeNames: true, sorted: true, sex: 'male'}))
+//console.log(speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().filter(d=>d.sex==='male').map(j=>j.name))
+console.log(getAnimalMap({includeNames: true, sorted: true, sex: 'male'}))
 module.exports = getAnimalMap, animalLocationsFactory;
