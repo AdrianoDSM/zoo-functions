@@ -1,6 +1,8 @@
 const data = require('../data/zoo_data');
 const speciesList = data.species;
 
+const getFilteredSpecies = (specie) => speciesList.filter(e=>e.name===specie).map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort();
+
 function animalLocationsFactory(){
     const animalLocations = {
         NE: speciesList.filter(e=>e.location==='NE').map(i=>i.name),
@@ -22,7 +24,7 @@ function getAnimalMap(options) {
     }else if(options.includeNames && options.sorted && (options.sex==='male' || options.sex==='female')){
         
         animalLocations.NE=[
-            {lions: speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
+            {lions: getFilteredSpecies('lions')},
             {giraffes: speciesList.filter(e=>e.name==='giraffes').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()}
         ];
         animalLocations.NW=[
