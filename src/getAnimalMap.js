@@ -24,7 +24,7 @@ function getAnimalMap(options) {
     }else if(options.includeNames && options.sorted && (options.sex==='male' || options.sex==='female')){
         
         animalLocations.NE=[
-            {lions: getFilteredSpecies('lions')},
+            {lions: speciesList.filter(e=>e.name==='lions').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()},
             {giraffes: speciesList.filter(e=>e.name==='giraffes').map(i=>i.residents).flat().filter(d=>d.sex===options.sex).map(j=>j.name).sort()}
         ];
         animalLocations.NW=[
